@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>△□○</title>
+    <script src="processing-1.4.8.min.js"></script>
+    <script type="text/processing" data-processing-target="processing-canvas">
+
+vod setup(){
+    size(400,400);
+    noFill();
+}
+
+var r,a=70,b=60;
+var delta_a=-0.3;
+
+void draw(){
+
+
+	r=a+sqrt(a*a+b*b);
+
+    background(255);
+
+    //line(0,height-1,width-1,height-1);
+    
+    ellipseMode(CENTER);
+	ellipse(width/2, height/2, r*2, r*2);
+	
+	ellipse(width/2 + r-a, height/2, a*2,b*2);//right
+	ellipse(width/2 - r+a, height/2,a*2,b*2);//left
+	
+	ellipse(width/2,height/2 -r+a,b*2,a*2);//up
+	ellipse(width/2,height/2 +r-a,b*2,a*2);//down
+	
+
+	//console.log(r);
+	
+	a=a+delta_a;
+	if(a<1){
+		delta_a=0.3;
+	} else if(a>120){
+		delta_a=-0.3;
+	}
+    
+    
+
+}
+    
+    </script>
+
+ 
+</head>
+<body>
+    <BR>
+ 
+    <canvas id="processing-canvas"> </canvas>
+  	<p>r=a+sqrt(a*a+b*b)</p>
+</body>
+</html>

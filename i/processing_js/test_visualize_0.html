@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>△□○</title>
+    <script src="processing-1.4.8.min.js"></script>
+    <script type="text/processing" data-processing-target="processing-canvas">
+
+//x=a*b/(a+b) a square in rectangle	var a=300.0;
+	var a=300.0;
+	var b=200.0;
+	var x=a*b/(a+b);
+	var d_a=0.45;
+	var d_b=0.37;
+    
+	void setup() {
+	  size(400, 400);
+	  background(255);
+	  fill(255);
+	}
+
+    void draw(){
+        background(255);
+        
+        stroke(64);
+        triangle(0, height-1,   //A
+        a,height-1,       //B
+        a,width-b                 //C
+        );
+        
+        x=a*b/(a+b);
+        rect(a, height-1, -x,-x);
+        
+        a=a+d_a;
+        if( (a>width) ){
+            d_a=d_a*-1;
+            
+        } else if(a<50){
+            
+            d_a=d_a*-1;
+        }
+
+        b=b+d_b;
+        if( b>height){
+            d_b=d_b*-1;
+        } else if(b<50){
+            d_b=d_b*-1;
+        }
+
+        
+    }
+    
+    </script>
+
+ 
+</head>
+<body>
+    <BR>
+ 
+     <canvas id="processing-canvas"> </canvas>
+  	<p>a-x : x = x : b-x</p>
+    <p>x=a*b/(a+b)</p>
+</body>
+</html>

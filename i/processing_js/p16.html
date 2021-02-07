@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>△□○</title>
+    <script src="processing-1.4.8.min.js"></script>
+    <script type="text/processing" data-processing-target="processing-canvas">
+		/*
+		This sketch builds on a prior work, "Untitled Sketch", created by [unnamed author]
+		http://sketchpad.cc/sp/pad/view/ro.p$v9MSdppk1/rev.115
+		*/
+		// Pressing Control-R will render this sketch.
+		int rx=79;
+		int ry=89;
+		int dx=1;
+		int dy=-1;
+
+		int r;
+		void setup() {  // this is run once.
+
+		    // set the background color
+		    background(255);
+
+		    // canvas size (Integers only, please.)
+		    size(300, 300);
+
+		    // smooth edges
+		    smooth();
+
+		    // limit the number of frames per second
+		    frameRate(20);
+
+		    // set the width of the line.
+		    strokeWeight(1);
+		}
+
+		void draw() {  // this is run repeatedly.
+		    background(255);
+		    r=sqrt(rx*rx+ry*ry);
+		    stroke(50);
+
+		    ellipse(150,150,rx*2,ry*2);
+
+		    //draw a square.
+		    line(150,150-r, 150+r,150);
+		    line(150+r,150, 150,150+r);
+		    line(150,150+r, 150-r,150);
+		    line(150-r,150, 150,150-r);
+
+
+		    if( (rx>130) || (rx<10) ){
+		        dx=dx*-1;
+		    }
+		    rx=rx+dx;
+
+		    if( (ry>130) || (ry<10) ){
+		        dy=dy*-1;
+		    }
+		    ry=ry+dy;
+
+
+
+
+		}
+
+    </script>
+
+</head>
+<body>
+    <BR>
+    <canvas id="processing-canvas"> </canvas>
+    <p></p>
+</body>
+</html>

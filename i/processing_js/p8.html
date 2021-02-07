@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>△□○</title>
+    <script src="processing-1.4.8.min.js"></script>
+    <script type="text/processing" data-processing-target="processing-canvas">
+
+//x=a*b/(a+b) a square in rectangle
+
+    var r,a=39,b=37;
+    var delta_a=1,delta_b=-1;
+    
+	void setup() {
+	  size(400, 400);
+	  background(255);
+	  noFill();
+      frameRate(40);
+
+	}
+
+    void draw(){
+        background(255);
+        
+
+		r= a*a / ( sqrt(a*a-b*b) );
+		
+		ellipseMode(CENTER);
+		ellipse(width/2, height/2, r*2, r*2);//draw r
+		
+		ellipse(width/2,height/2-b,a*2,b*2);
+		ellipse(width/2,height/2+b,a*2,b*2);
+
+		a=a+delta_a;
+		//b=b+delta_b;
+		if(r>=200){
+			delta_a=-1;
+		}else if(a<=b+10){
+			delta_a=1;
+		}
+
+
+
+    }
+    
+    </script>
+
+ 
+</head>
+<body>
+    <BR>
+    <canvas id="processing-canvas"> </canvas>
+  	<p>r=a*a/(sqrt(a*a-b*b))</p>
+</body>
+</html>

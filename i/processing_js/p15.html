@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>△□○</title>
+    <script src="processing-1.4.8.min.js"></script>
+    <script type="text/processing" data-processing-target="processing-canvas">
+
+	int a,delta=0.5;
+
+	void setup() {
+	  size(400, 400);
+	  background(255);
+	  noFill();
+	  
+	  a=70;
+	  
+	}
+
+    void draw(){
+        background(255);
+        
+        stroke(0);
+
+		r=190;
+		x= ( 4*a - 2*sqrt(5*r*r-a*a) )/5;
+		
+		c=width/2;
+		
+				
+		ellipse(c,c,r*2,r*2);
+		
+		rect(c-x/2,c-a, x,x);//up
+
+		rect(c-x/2,c+a, x,-x);//down
+		
+		rect(c-a,c-x/2,x,x);//left
+		rect(c+a,c-x/2,-x,x);//right
+		
+
+		a=a+delta;
+		
+		if(a>r || a<-r){
+			delta=delta*-1;
+		}
+
+
+	}//end of draw()
+	
+
+    
+    </script>
+
+</head>
+<body>
+    <BR>
+    <canvas id="processing-canvas"> </canvas>
+    <p>4 squares in the circle</p>
+</body>
+</html>

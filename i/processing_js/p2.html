@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>△□○</title>
+    <script src="processing-1.4.8.min.js"></script>
+    <script type="text/processing" data-processing-target="processing-canvas">
+
+vod setup(){
+    size(400,400);
+    noFill();
+}
+
+var r1=200,r2=150,dst,r3,dst1_3;
+var delta1=-1,delta2=0.7;
+void draw(){
+
+
+    dst=sqrt(r1*r2)*2;
+
+	var x=1/sqrt(r2)+1/sqrt(r1);
+	x=1/x;
+	r3=x*x;
+	
+    dst1_3=sqrt(r1*r3)*2;
+
+    background(255);
+
+    line(0,height-1,width-1,height-1);
+    
+    ellipseMode(CENTER);
+	ellipse(0, height-1-r1, r1*2, r1*2);
+	ellipse(dst, height-1-r2, r2*2, r2*2);
+	ellipse(dst1_3,height-1-r3,r3*2,r3*2);
+	//console.log(dst1_3);
+	//console.log(r3);
+    
+    r1+=delta1;
+    r2+=delta2;
+    if(r1<100){
+    	delta1=1;
+    }else if (r1>200) {
+    	delta1=-1;
+    }
+    if(r2<100){
+    	delta2=0.7;
+    }else if (r2>200) {
+    	delta2=-0.7;
+    }
+    
+    
+
+}
+    
+    </script>
+
+ 
+</head>
+<body>
+    <BR>
+ 
+    <canvas id="processing-canvas"> </canvas>
+  	<p>1/sqrt(r3)=1/sqrt(r2)+1/sqrt(r1)</p>
+</body>
+</html>
